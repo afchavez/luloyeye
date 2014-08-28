@@ -1,0 +1,35 @@
+<h1>listado de solicitudes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Origen</th>
+      <th>Destino</th>
+      <th>Destinodos</th>
+      <th>Hora</th>
+      <th>Valor</th>
+      <th>Notas</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @puntos.each do |punto| %>
+      <tr>
+        <td><%= punto.origen %></td>
+        <td><%= punto.destino %></td>
+        <td><%= punto.destinodos %></td>
+        <td><%= punto.hora %></td>
+        <td><%= punto.valor %></td>
+        <td><%= punto.notas %></td>
+        <td><%= link_to 'Show', punto %></td>
+        <td><%= link_to 'Edit', edit_punto_path(punto) %></td>
+        <td><%= link_to 'Destroy', punto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Punto', new_punto_path %>

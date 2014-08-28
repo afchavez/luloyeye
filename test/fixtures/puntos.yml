@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  origen: MyString
+  destino: MyString
+  destinodos: MyString
+  hora: 2014-08-28 13:37:31
+  valor: 1
+  notas: MyString
+
+two:
+  origen: MyString
+  destino: MyString
+  destinodos: MyString
+  hora: 2014-08-28 13:37:31
+  valor: 1
+  notas: MyString
