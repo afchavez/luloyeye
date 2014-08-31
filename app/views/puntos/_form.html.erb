@@ -11,31 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :origen %><br>
-    <%= f.text_field :origen %>
+    <%= f.text_field :origen, class: "form-group" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :destino %><br>
-    <%= f.text_field :destino %>
+    <%= f.text_field :destino, class: "form-group" %>
   </div>
-  <div class="field">
-    <%= f.label :destinodos %><br>
-    <%= f.text_field :destinodos %>
+  <div class="form-group">
+    <%= f.label :destino_Extra_Opcional %><br>
+    <%= f.text_field :destinodos, class: "form-group" %>
   </div>
-  <div class="field">
-    <%= f.label :hora %><br>
-    <%= f.datetime_select :hora %>
+  <div class="form-group">
+    <%= f.label :hora_de_recogida %><br>
+    <%= f.datetime_select :hora, class: "form-group" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :valor %><br>
-    <%= f.number_field :valor %>
+    <%= f.number_field :valor, class: "form-group" %>
   </div>
-  <div class="field">
-    <%= f.label :notas %><br>
-    <%= f.text_field :notas %>
+  <div class="form-group">
+    <%= f.label :notas_e_instrucciones %><br>
+    <%= f.text_field :notas, class: "form-group" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary", value: "Nueva vuelta"  %>
   </div>
 <% end %>
