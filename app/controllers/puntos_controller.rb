@@ -1,6 +1,7 @@
 class PuntosController < ApplicationController
   before_action :set_punto, only: [:show, :edit, :update, :destroy]
-
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
   # GET /puntos
   # GET /puntos.json
   def index
@@ -14,7 +15,7 @@ class PuntosController < ApplicationController
 
   # GET /puntos/new
   def new
-    @punto = Punto.new
+    @punto = current_user.puntos.build
   end
 
   # GET /puntos/1/edit
@@ -24,7 +25,7 @@ class PuntosController < ApplicationController
   # POST /puntos
   # POST /puntos.json
   def create
-    @punto = Punto.new(punto_params)
+    @punto = current_user.puntos.build(punto_params)
 
     respond_to do |format|
       if @punto.save
@@ -66,6 +67,13 @@ class PuntosController < ApplicationController
     def set_punto
       @punto = Punto.find(params[:id])
     end
+
+    def correct_user
+      @punto = current_user.puntos.find_by(id: params[:id])
+      redirect_to puntos_path, notice: "No estás autorizado para ver este contenido" if @punto.nil?
+    end 
+
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def punto_params
