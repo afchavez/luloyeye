@@ -11,6 +11,8 @@ class PuntosController < ApplicationController
   # GET /puntos/1
   # GET /puntos/1.json
   def show
+    @punto = current_user.puntos.build
+    
   end
 
   # GET /puntos/new
