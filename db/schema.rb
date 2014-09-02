@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140902003555) do
+=======
+ActiveRecord::Schema.define(version: 20140831054431) do
+>>>>>>> a51d7bb18aa0280f8a309304c5457fb394998044
 
   create_table "puntos", force: true do |t|
     t.string   "origen"

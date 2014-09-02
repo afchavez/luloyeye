@@ -6,6 +6,7 @@
       <th>Origen</th>
       <th>Destino</th>
       <th>Destino Extra (opcional)</th>
+      <th>Usuario</th>
       <th>Hora de recogida</th>
       <th>Valor Mercancía</th>
       <th>Notas e instrucciones</th>
@@ -19,12 +20,15 @@
         <td><%= punto.origen %></td>
         <td><%= punto.destino %></td>
         <td><%= punto.destinodos %></td>
+        <td><%= punto.user.email if punto.user %></td>
         <td><%= punto.hora %></td>
         <td><%= punto.valor %></td>
         <td><%= punto.notas %></td>
         <td><%= link_to 'Ver', punto %></td>
+      <% if punto.user == current_user %>
         <td><%= link_to 'Editar', edit_punto_path(punto) %></td>
         <td><%= link_to 'Eliminar', punto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %> 
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +36,7 @@
 
 <br>
 
+<% if user_signed_in? %>
 <%= link_to 'Nueva vuelta', new_punto_path %>
+<% end %>
+
