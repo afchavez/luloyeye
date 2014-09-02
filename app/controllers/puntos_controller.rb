@@ -1,5 +1,6 @@
 class PuntosController < ApplicationController
   before_action :set_punto, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /puntos
   # GET /puntos.json
@@ -14,7 +15,7 @@ class PuntosController < ApplicationController
 
   # GET /puntos/new
   def new
-    @punto = Punto.new
+    @punto = current_user.puntos.build
   end
 
   # GET /puntos/1/edit
@@ -24,17 +25,15 @@ class PuntosController < ApplicationController
   # POST /puntos
   # POST /puntos.json
   def create
-    @punto = Punto.new(punto_params)
+    @punto = current_user.puntos.build(punto_params)
 
-    respond_to do |format|
-      if @punto.save
-        format.html { redirect_to @punto, notice: 'Punto was successfully created.' }
-        format.json { render :show, status: :created, location: @punto }
-      else
-        format.html { render :new }
-        format.json { render json: @punto.errors, status: :unprocessable_entity }
-      end
+    if @punto.update(punto_params)
+      redirect_to @punto, notice: 'Pin was successfully updated.'
+    else
+      render action: 'edit'
     end
+
+      
   end
 
   # PATCH/PUT /puntos/1
